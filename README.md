@@ -1,7 +1,15 @@
+# Introduction
+
+This is a simple image processor cli.
+
+Currently only support invert jpg image.
+
 # Prerequisites
+
 - Go 1.18 or higher
 
 # Run
+
 ```bash
 go build -o img-processor
 ./img-processor invert asset/test.jpg
