@@ -18,4 +18,4 @@ go build -o img-processor
 The output image will be saved in `out/inverted-test.jpg`
 
 ![test](asset/test.jpg)
-![inverted-test](out/inverted-test.jpg)
+![inverted-test](asset/inverted-test.jpg)
