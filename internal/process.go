@@ -34,9 +34,13 @@ func ProcessImage(imgPath string, action Action) error {
 		return fmt.Errorf("process image failed: %w", err)
 	}
 	if img != nil {
-		err = WriteImage(img, getOutPath(imgPath, processor))
+		outPath := getOutPath(imgPath, processor)
+		err = WriteImage(img, outPath)
 		if err != nil {
 			return fmt.Errorf("write image failed: %w", err)
+		}
+		if IndicateOutPath {
+			fmt.Println(outPath)
 		}
 	}
 	return nil
@@ -47,5 +51,8 @@ func getOutPath(imgPath string, maybePrefixer interface{}) string {
 	if prefixer, ok := maybePrefixer.(outPrefixer); ok {
 		prefix = prefixer.OutPrefix() + "-"
 	}
-	return filepath.Join(outPath, prefix+filepath.Base(imgPath))
+	return filepath.Join(
+		OutPath,
+		prefix+filepath.Base(imgPath),
+	)
 }

@@ -14,5 +14,5 @@ const (
 )
 
 const (
-	outPath = "out"
+	DefaultOutPath = "out"
 )

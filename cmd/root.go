@@ -4,6 +4,7 @@ Copyright © 2025 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
+	"img-processor/internal"
 	"os"
 
 	"github.com/spf13/cobra"
@@ -36,5 +37,7 @@ func init() {
 
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
-	//rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	//rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle"
+	rootCmd.PersistentFlags().StringVarP(&internal.OutPath, "output", "o", internal.DefaultOutPath, "output path")
+	rootCmd.PersistentFlags().BoolVarP(&internal.IndicateOutPath, "indicate-out-path", "i", false, "print output/file/path (friendly to pipe)")
 }
