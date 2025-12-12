@@ -32,9 +32,6 @@ Leverage the `-i` flag to print the output path, so that you can pipe the output
 ./img-processor invert asset/test.jpg -i | xargs ./img-processor mirror
 ```
 
-
-The output image will be saved in `out/inverted-test.jpg`
-
 # Examples
 ## invert
 ![test](asset/test.jpg)
