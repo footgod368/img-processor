@@ -4,30 +4,31 @@ Copyright © 2025 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	"github.com/spf13/cobra"
 	"img-processor/internal"
+
+	"github.com/spf13/cobra"
 )
 
-// invertCmd represents the invert command
-var invertCmd = &cobra.Command{
-	Use:   "invert [path/to/image]",
-	Short: "invert the image at the given path",
+// printCmd represents the print command
+var printCmd = &cobra.Command{
+	Use:   "print [path/to/image]",
+	Short: "print the image at the given path, each pixel in a line: r g b a",
 	Args:  cobra.ExactArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
-		return internal.ProcessImage(args[0], internal.Invert)
+		return internal.ProcessImage(args[0], internal.Print)
 	},
 }
 
 func init() {
-	rootCmd.AddCommand(invertCmd)
+	rootCmd.AddCommand(printCmd)
 
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
-	// invertCmd.PersistentFlags().String("foo", "", "A help for foo")
+	// printCmd.PersistentFlags().String("foo", "", "A help for foo")
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	// invertCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	// printCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }

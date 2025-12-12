@@ -5,7 +5,10 @@ import (
 	"image"
 )
 
-func PrintImage(img image.Image) {
+type printImage struct {
+}
+
+func (printImage) Process(img image.Image) (image.Image, error) {
 	rect := img.Bounds()
 	for y := rect.Min.Y; y < rect.Max.Y; y++ {
 		for x := rect.Min.X; x < rect.Max.X; x++ {
@@ -13,4 +16,5 @@ func PrintImage(img image.Image) {
 			fmt.Println(r, g, b, a)
 		}
 	}
+	return nil, nil
 }
