@@ -8,7 +8,7 @@ Currently only support invert jpg image.
 
 - Go 1.18 or higher
 
-# Run
+# Usage
 
 ```bash
 go build -o img-processor
