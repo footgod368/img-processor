@@ -4,6 +4,7 @@ import (
 	"image"
 	"image/color"
 	_ "image/jpeg"
+	_ "image/png"
 	"os"
 )
 
@@ -26,13 +27,9 @@ func castToRGBA8(img image.Image) image.Image {
 	for y := rect.Min.Y; y < rect.Max.Y; y++ {
 		for x := rect.Min.X; x < rect.Max.X; x++ {
 			r, g, b, a := img.At(x, y).RGBA()
-			r8, g8, b8, a8 := convToRGBA8(r, g, b, a)
+			r8, g8, b8, a8 := uint8(r>>8), uint8(g>>8), uint8(b>>8), uint8(a>>8)
 			newImg.Set(x, y, color.RGBA{uint8(r8), uint8(g8), uint8(b8), uint8(a8)})
 		}
 	}
 	return newImg
-}
-
-func convToRGBA8(r, g, b, a uint32) (uint8, uint8, uint8, uint8) {
-	return uint8(r >> 8), uint8(g >> 8), uint8(b >> 8), upperBound8
 }

@@ -12,7 +12,7 @@ func (mirrorImage) Process(img image.Image) (image.Image, error) {
 	rect := img.Bounds()
 	newImg := image.NewRGBA(rect)
 	for y := rect.Min.Y; y < rect.Max.Y; y++ {
-		for left, right := rect.Min.X, rect.Max.X; left < right; left, right = left+1, right-1 {
+		for left, right := rect.Min.X, rect.Max.X-1; left < right; left, right = left+1, right-1 {
 			rLeft, gLeft, bLeft, aLeft := img.At(left, y).RGBA()
 			rRight, gRight, bRight, aRight := img.At(right, y).RGBA()
 			newImg.Set(left, y, color.RGBA{uint8(rRight), uint8(gRight), uint8(bRight), uint8(aRight)})
